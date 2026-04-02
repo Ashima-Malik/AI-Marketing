@@ -603,3 +603,4 @@ Two images are generated and saved to the same pipeline folder:
 - [ ] `concept-explainer.png` generated and saved to pipeline folder
 - [ ] `image-prompts.json` saved (review prompts; re-run script if style needs adjusting)
 - [ ] Brand credit visible bottom-right on both images (`BRAND_CREDIT` set in `.env`)
+
