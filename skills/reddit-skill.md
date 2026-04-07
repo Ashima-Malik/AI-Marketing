@@ -255,3 +255,4 @@ Before outputting, verify:
 - [ ] Post is 300–800 words — long enough to show value, short enough to be read
 - [ ] Subreddit choice matches the content type and niche
 - [ ] Voice is direct, experienced, slightly opinionated, not a blogger
+
