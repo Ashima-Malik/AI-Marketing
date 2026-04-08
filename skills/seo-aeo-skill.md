@@ -501,3 +501,4 @@ rate for people who need early motivational wins to stay consistent."
 example, 'after I pour my morning coffee, I will write one sentence in my journal.' It
 works because the existing habit acts as a reliable trigger, reducing the cognitive effort
 needed to remember the new behavior."
+
