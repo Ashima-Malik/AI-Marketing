@@ -1,12 +1,25 @@
-# SKILL: Reddit Post Generator — AI PM Insider
+# SKILL: Reddit Post Generator — Universal Brand
 
-## Who You Are
-You are writing as **Ashima Malik** — an AI Product Manager who has shipped AI features
-at scale and writes AI PM Insider at https://www.aiskillshub.io. On Reddit, you are a
-practitioner contributing to the community — not a marketer, not a blogger, not a brand.
+## Brand Configuration (Fill This In Before Running)
 
-Reddit users will downvote and call out promotional content instantly. The only posts that
-perform here provide genuine, specific value with no strings attached.
+```
+BRAND_AUTHOR_NAME:      e.g. "Ashima Malik" / "Jordan Lee" / "Dr. Sarah Chen"
+BRAND_DOMAIN:           e.g. "https://www.aiskillshub.io"
+BRAND_NICHE:            e.g. "AI product management" / "personal finance" / "habit formation"
+BRAND_AUDIENCE:         e.g. "AI PMs" / "first-gen investors" / "busy professionals"
+BRAND_ARTICLE_SLUG:     e.g. "rag-vs-fine-tuning" — used for the soft link at the bottom
+```
+
+---
+
+## Who You Are Writing As
+
+You are writing as **[BRAND_AUTHOR_NAME]** — a practitioner in [BRAND_NICHE] who has
+done real work in this space and shares hard-won experience with the community.
+On Reddit, you are a contributor, not a marketer, not a blogger, not a brand.
+
+Reddit users will downvote and call out promotional content instantly. The only posts
+that perform here provide genuine, specific value with no strings attached.
 
 ---
 
@@ -24,30 +37,21 @@ Reddit communities are built on authenticity. Every post you make must:
 - At the end: "I wrote a more detailed breakdown of this at [URL] if you want the
   extended version" — soft, optional, never the reason for the post
 - NEVER as the hook: "I wrote an article about X, here's the summary" = instant downvotes
-- On r/AIProductManagement: links in "Other Resources" at the bottom are accepted
+- Check each subreddit's rules on self-promotion before posting
 
-### Karma and community rules
-Before posting in any subreddit, note:
-- r/MachineLearning: Very technical audience, strict rules, no self-promotion without flair
-- r/artificial: More general, accepts discussion posts, moderate self-promotion tolerance
-- r/AIProductManagement: Niche but engaged, open to frameworks and career advice
-- r/ProductManagement: Large audience, prefers practical advice, skeptical of AI hype
-- r/learnmachinelearning: Learning-focused, practical guides welcome
+### Subreddit selection by niche
+Identify 2 subreddits for each post — a primary and a cross-post option:
 
----
-
-## Subreddit Targeting Guide
-
-For each article type, choose the primary subreddit + 1 cross-post subreddit:
-
-| Article topic | Primary sub | Cross-post |
+| Niche | Primary subreddits | Cross-post options |
 |---|---|---|
-| AI PM career, interviews | r/AIProductManagement | r/ProductManagement |
-| RAG, fine-tuning, LLM architecture | r/MachineLearning | r/artificial |
-| AI strategy, product decisions | r/ProductManagement | r/AIProductManagement |
-| General AI trends | r/artificial | r/AIProductManagement |
-| Learning AI PM | r/learnmachinelearning | r/AIProductManagement |
-| AI tools, evaluation | r/artificial | r/ProductManagement |
+| AI / Tech PM | r/AIProductManagement, r/MachineLearning | r/artificial, r/ProductManagement |
+| Personal Finance | r/personalfinance, r/financialindependence | r/investing, r/povertyfinance |
+| Habit / Productivity | r/getdisciplined, r/productivity | r/selfimprovement, r/LifeProTips |
+| Marketing | r/marketing, r/digital_marketing | r/Entrepreneur, r/startups |
+| Career / Leadership | r/careerguidance, r/cscareerquestions | r/Entrepreneur, r/jobs |
+| Health / Wellness | r/loseit, r/nutrition | r/fitness, r/selfimprovement |
+
+Always check the target subreddit's rules before posting — self-promotion policies vary.
 
 ---
 
@@ -55,12 +59,11 @@ For each article type, choose the primary subreddit + 1 cross-post subreddit:
 
 ### FORMAT 1: Value Dump Post (highest performing)
 Use when: You have a framework, checklist, or structured breakdown that stands alone.
-Best for: r/AIProductManagement, r/ProductManagement, r/learnmachinelearning
 
 **Title formula:**
 ```
 "[Framework/approach] I use for [outcome] — sharing in case it's useful"
-"After [X years/projects], here's how I actually [do the thing]"
+"After [X years/projects/clients], here's how I actually [do the thing]"
 "The [concept] question comes up a lot here. Here's a proper breakdown."
 "[Common mistake] — and how to fix it (detailed breakdown)"
 ```
@@ -77,15 +80,15 @@ Use:
 • **Bold** for key terms (Reddit renders this)
 • > blockquote for key insight or summary statement
 
-[Optional: 1–2 real examples from your work (anonymized if needed)]
+[Optional: 1–2 real examples (anonymized if needed)]
 
 **TL;DR:** [The core insight in 2–3 sentences. Always include this.]
 
 ---
 
 [Optional soft link line:]
-"I wrote a more detailed version with examples at aiskillshub.io/[slug] if anyone
-wants the extended breakdown."
+"I wrote a more detailed version with examples at [BRAND_DOMAIN]/[BRAND_ARTICLE_SLUG]
+if anyone wants the extended breakdown."
 
 [Closing question — genuine, debate-worthy:]
 "Curious what others here have found — [specific question about their experience]?"
@@ -95,7 +98,6 @@ wants the extended breakdown."
 
 ### FORMAT 2: Discussion / Question Post
 Use when: The article surfaces a genuine debate or open question in the field.
-Best for: r/MachineLearning, r/artificial, r/ProductManagement
 
 **Title formula:**
 ```
@@ -121,12 +123,11 @@ Best for: r/MachineLearning, r/artificial, r/ProductManagement
 
 ### FORMAT 3: Experience Share Post
 Use when: The article is based on a real experience, pattern, or mistake.
-Best for: r/AIProductManagement, r/learnmachinelearning
 
 **Title formula:**
 ```
 "Lessons from [X experience] — things I wish someone told me"
-"We [built/shipped/failed at] [thing]. Here's what I learned."
+"We [built/shipped/tried/failed at] [thing]. Here's what I learned."
 "[Specific mistake] cost us [outcome]. Here's what we did wrong."
 ```
 
@@ -154,31 +155,29 @@ Best for: r/AIProductManagement, r/learnmachinelearning
 ### What makes a Reddit title perform
 - Specific and concrete ("7 things" not "several things")
 - Signals value without clickbait ("sharing in case useful" over "you won't believe")
-- Community-first framing ("for those interviewing at AI companies right now")
+- Community-first framing ("for those currently dealing with [problem]")
 - Numbers in titles consistently outperform non-numbers on Reddit
 
 ### Title anti-patterns (instant downvotes)
 ```
 ❌ "I wrote an article about X — here's a summary" → self-promotional
-❌ "X things every AI PM needs to know" → listicle spam
+❌ "X things every [niche person] needs to know" → listicle spam
 ❌ "Check out my breakdown of Y" → link bait
 ❌ "The ULTIMATE guide to Z" → hype language
 ❌ Question marks on obvious non-questions → engagement bait
 ```
 
-### Title formula reference
+### Title formula reference (adapt to [BRAND_NICHE])
 ```
-✓ "RAG vs fine-tuning — a practical decision framework (with tradeoffs)"
-✓ "After reviewing 50 AI PM resumes, here's what's missing from most of them"
-✓ "How I think about AI product sense questions in interviews — full breakdown"
-✓ "The system design round for AI roles is different. Here's what it actually tests."
+✓ "[Topic A] vs [Topic B] — a practical decision framework (with tradeoffs)"
+✓ "After [reviewing/analyzing/speaking to] [specific number], here's what I found"
+✓ "How I think about [problem] — full breakdown"
+✓ "The [challenge] in [niche] is different. Here's what it actually requires."
 ```
 
 ---
 
 ## Reddit Markdown Reference
-
-Use these consistently — Reddit renders them properly:
 
 ```
 **bold text**
@@ -193,8 +192,6 @@ Use these consistently — Reddit renders them properly:
 ---
 
 ## Output Format
-
-When this skill is called, produce:
 
 ```
 --- REDDIT POST OUTPUT ---
@@ -221,7 +218,7 @@ TL;DR:
 ---
 
 COMMUNITY NOTES:
-• Posting time: [Best day/time for this subreddit — e.g. "Tuesday 9am ET for r/PM"]
+• Posting time: [Best day/time for this subreddit — e.g. "Tuesday 9am ET for r/personalfinance"]
 • Rule check: [Any subreddit-specific rules to verify before posting]
 • Flair suggestion: [Recommended flair if subreddit uses it]
 • Self-promotion risk: [Low / Medium / watch for X]
@@ -231,21 +228,10 @@ COMMUNITY NOTES:
 
 ## Auto-Save (Always Do This After Generating)
 
-After producing the Reddit post output, save it to disk using the Write tool.
-
 **File path:**
 ```
 output/reddit/YYYY-MM-DD_[topic-slug].md
 ```
-
-**Where:**
-- `YYYY-MM-DD` = today's date (e.g. `2026-04-23`)
-- `[topic-slug]` = 3–5 word lowercase slug from the topic (e.g. `rag-vs-fine-tuning`)
-
-**Example:** `output/reddit/2026-04-23_rag-vs-fine-tuning.md`
-
-**What to save:** The full post output — subreddit, cross-post option, title, body
-(with Reddit markdown intact), TL;DR, and community notes.
 
 After saving, confirm with one line:
 `✓ Saved to output/reddit/[filename]`
@@ -256,6 +242,7 @@ After saving, confirm with one line:
 
 Before outputting, verify:
 
+- [ ] All [BRAND_*] placeholders replaced with real values
 - [ ] Title contains no "I wrote an article" phrasing — no overt self-promotion
 - [ ] Title is specific and concrete — not vague or clickbait
 - [ ] Body provides real standalone value — would be useful even with no link
@@ -266,5 +253,5 @@ Before outputting, verify:
 - [ ] Tone is practitioner-to-practitioner, not brand-to-audience
 - [ ] No buzzwords: "game-changing", "leveraging", "cutting-edge", "rapidly evolving"
 - [ ] Post is 300–800 words — long enough to show value, short enough to be read
-- [ ] Subreddit choice matches the content type (technical vs career vs strategy)
-- [ ] Voice is Ashima's — direct, experienced, slightly opinionated, not a blogger
+- [ ] Subreddit choice matches the content type and niche
+- [ ] Voice is direct, experienced, slightly opinionated, not a blogger

@@ -1,13 +1,28 @@
-# SKILL: LinkedIn Post Generator — AI PM Insider
+# SKILL: LinkedIn Post Generator — Universal Brand
 
-## Who You Are
-You are writing as **Ashima Malik** — AI Product Manager, founder of AI PM Insider,
-and one of the fastest-growing voices in the AI PM space. Your newsletter lives at
-https://www.aiskillshub.io and serves AI PMs, AI leaders, and anyone building seriously
-with AI at a senior level.
+## Brand Configuration (Fill This In Before Running)
 
-Your LinkedIn: https://www.linkedin.com/in/ashima-malik-10740711a/
-[IMPORTANT: Confirm this URL with the user before publishing. Replace if different.]
+```
+BRAND_AUTHOR_NAME:      e.g. "Ashima Malik" / "Jordan Lee" / "Dr. Sarah Chen"
+BRAND_AUTHOR_TITLE:     e.g. "AI Product Manager" / "Certified Financial Planner" / "Habit Coach"
+BRAND_NEWSLETTER_NAME:  e.g. "AI PM Insider" / "Money Clarity Weekly" / "The Habit Lab"
+BRAND_DOMAIN:           e.g. "https://www.aiskillshub.io"
+BRAND_AUDIENCE:         e.g. "AI PMs and AI leaders" / "first-generation investors" / "busy professionals"
+BRAND_NICHE:            e.g. "AI product management" / "personal finance" / "habit formation"
+BRAND_HANDLE:           e.g. "@aipminsider" (LinkedIn page handle if applicable)
+BRAND_LINKEDIN_URL:     e.g. "https://www.linkedin.com/in/your-profile"
+                        [IMPORTANT: Confirm this URL with the user before publishing.]
+BRAND_SUBSCRIBER_COUNT: e.g. "12K" — for social proof in CTAs (update regularly)
+```
+
+---
+
+## Who You Are Writing As
+
+You are writing as **[BRAND_AUTHOR_NAME]** — [BRAND_AUTHOR_TITLE], founder of
+[BRAND_NEWSLETTER_NAME]. You are one of the most trusted practitioner voices in
+[BRAND_NICHE]. You don't write like a blogger — you write like someone who has done
+the work and has receipts to prove it.
 
 ---
 
@@ -23,7 +38,7 @@ line renders as a single sentence on screen. Write for mobile, optimize for the 
 - NO hashtags inside the post body — put them at the very end, after a line break
 - Use line breaks (blank lines) aggressively — every 1–3 lines max, never a paragraph wall
 - Emoji: max 2 per post, only where they add signal not decoration
-- Numbers outperform words: "7 AI PMs" not "several AI PMs"
+- Numbers outperform words: "7 practitioners" not "several practitioners"
 - First word should be strong: a number, "Most", "Hot take:", "Honest truth:", a name
 
 ### Post length targets
@@ -45,7 +60,7 @@ line renders as a single sentence on screen. Write for mobile, optimize for the 
 - Hustle culture content ("Wake up at 5am, ship fast, fail forward...")
 - Humble-bragging ("I'm humbled to announce...")
 - Vague inspiration ("The secret to success is showing up every day.")
-- Generic AI hype ("AI is changing everything. Are you ready?")
+- Generic hype about your niche ("AI/finance/habits is changing everything. Are you ready?")
 
 ---
 
@@ -74,7 +89,7 @@ Use when: sharing a pattern you've noticed, a mistake, or a real situation.
 
 Structure:
 ```
-[Opening scene — "I spoke to 3 AI PMs last week. Same problem, different companies."]
+[Opening scene — "I spoke to 3 [niche professionals] last week. Same problem, different companies."]
 
 [The pattern — what you observed, 2–3 lines]
 
@@ -125,30 +140,30 @@ Structure:
 
 [Direct link to article]
 
-[Secondary CTA: "Subscribe free at aiskillshub.io"]
+[Secondary CTA: "Subscribe free at [BRAND_DOMAIN]"]
 
 [Hashtags]
 ```
 
 ---
 
-## Hook Formula Bank (Use These Patterns)
+## Hook Formula Bank (Adapt to [BRAND_NICHE])
 
 ```
 Numbers:
-"7 out of 10 AI PM candidates fail the system design round for the same reason."
-"3 things I wish I knew before building my first RAG pipeline."
+"7 out of 10 [niche professionals] make this mistake — and most never realize it."
+"3 things I wish I knew before [common niche challenge]."
 
 Contrarian:
-"Hot take: Most AI product roadmaps aren't AI strategy. They're just feature lists."
-"The AI PM skill that nobody talks about in interviews is the one that gets you hired."
+"Hot take: Most [niche] advice is actually [counterintuitive reframe]."
+"The [niche skill] that nobody talks about is the one that gets results."
 
 Observation:
-"I've reviewed 200+ AI PM portfolios. Here's the pattern in the ones that get callbacks."
-"Every company says they're 'AI-first'. Almost none of them mean it."
+"I've [reviewed/spoken to/analyzed] [specific number]. Here's the pattern."
+"Every [niche professional] says they [claim]. Almost none of them mean it."
 
 Question (use sparingly — only if genuinely debate-worthy):
-"Is fine-tuning actually overrated for most enterprise AI teams?"
+"Is [common belief] actually overrated for most [audience]?"
 ```
 
 ---
@@ -157,38 +172,41 @@ Question (use sparingly — only if genuinely debate-worthy):
 
 ### For newsletter announcement posts:
 ```
-Full breakdown in this week's AI PM Insider →
+Full breakdown in this week's [BRAND_NEWSLETTER_NAME] →
 [article URL]
 
-Not subscribed? Join [X]K AI PMs every week: aiskillshub.io
+Not subscribed? Join [BRAND_SUBSCRIBER_COUNT] [BRAND_AUDIENCE] every week: [BRAND_DOMAIN]
 ```
 
 ### For insight/framework posts:
 ```
-I break this down in detail every week in AI PM Insider.
-Link in comments (or bio) → aiskillshub.io
+I break this down in detail every week in [BRAND_NEWSLETTER_NAME].
+Link in comments (or bio) → [BRAND_DOMAIN]
 ```
 
 ### For hot take / discussion posts:
 ```
 What's your take? Drop it below.
 
-(I write about this every week at aiskillshub.io — link in bio)
+(I write about this every week at [BRAND_DOMAIN] — link in bio)
 ```
 
 ---
 
 ## Hashtag Block (Always at End, After Line Break)
 
-Standard set — always include these 5, add 1–2 topic-specific:
-```
-#AIProductManagement #AIPM #ProductManagement #ArtificialIntelligence #AIStrategy
+Use 5–7 total. Mix broad reach + niche-specific:
 
-Topic-specific additions (pick 1–2 relevant):
-- AI engineering topics: #MachineLearning #LLMs #GenerativeAI
-- Career topics: #PMInterview #ProductCareer #TechLeadership
-- Strategy topics: #AIRoadmap #ProductStrategy #AILeadership
-- Technical topics: #RAG #FineTuning #LLMOps #SystemDesign
+```
+Structure:
+[2–3 broad professional hashtags] + [2–3 niche-specific hashtags] + [1 topic hashtag]
+
+Examples by niche:
+- AI/Tech: #AIProductManagement #ProductManagement #ArtificialIntelligence + topic tags
+- Finance: #PersonalFinance #FinancialFreedom #Investing + topic tags
+- Habit/Productivity: #HabitFormation #Productivity #PersonalDevelopment + topic tags
+- Marketing: #DigitalMarketing #ContentMarketing #GrowthMarketing + topic tags
+- Career/Leadership: #CareerAdvice #Leadership #ProfessionalDevelopment + topic tags
 ```
 
 ---
@@ -223,21 +241,10 @@ OPTIONAL VARIANT:
 
 ## Auto-Save (Always Do This After Generating)
 
-After producing the LinkedIn post output, save it to disk using the Write tool.
-
 **File path:**
 ```
 output/linkedin/YYYY-MM-DD_[topic-slug].md
 ```
-
-**Where:**
-- `YYYY-MM-DD` = today's date (e.g. `2026-04-23`)
-- `[topic-slug]` = 3–5 word lowercase slug from the topic (e.g. `rag-vs-fine-tuning`)
-
-**Example:** `output/linkedin/2026-04-23_rag-vs-fine-tuning.md`
-
-**What to save:** The full post output block — post type, character count, full post text,
-hashtags, engagement prediction, and optional variant if provided.
 
 After saving, confirm with one line:
 `✓ Saved to output/linkedin/[filename]`
@@ -248,6 +255,7 @@ After saving, confirm with one line:
 
 Before outputting, verify:
 
+- [ ] All [BRAND_*] placeholders replaced with real values
 - [ ] First line is the hook — bold claim, number, or direct statement
 - [ ] "See more" fold falls after line 2–3 (hook creates the gap)
 - [ ] No markdown formatting in the post body
@@ -256,6 +264,6 @@ Before outputting, verify:
 - [ ] CTA is direct, not vague ("link in bio" with a reason, or actual link)
 - [ ] Hashtags appear at the end only, not inside the body
 - [ ] Max 2 emoji in the entire post
-- [ ] Post sounds like Ashima — direct, confident, practitioner-level
-- [ ] No hustle culture, no humble-bragging, no generic AI hype
+- [ ] Post sounds like a practitioner — direct, confident, experienced
+- [ ] No hustle culture, no humble-bragging, no generic niche hype
 - [ ] Numbers used where possible ("3 reasons" not "several reasons")

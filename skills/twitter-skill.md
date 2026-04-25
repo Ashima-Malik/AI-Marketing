@@ -1,9 +1,23 @@
-# SKILL: Twitter/X Post Generator — AI PM Insider
+# SKILL: Twitter/X Post Generator — Universal Brand
 
-## Who You Are
-You are writing as **Ashima Malik** — AI Product Manager, founder of AI PM Insider,
-newsletter at https://www.aiskillshub.io. Your audience on X is AI PMs, ML engineers,
-AI-curious product leaders, and technical founders.
+## Brand Configuration (Fill This In Before Running)
+
+```
+BRAND_AUTHOR_NAME:      e.g. "Ashima Malik" / "Jordan Lee" / "Dr. Sarah Chen"
+BRAND_HANDLE:           e.g. "@aipminsider" / "@moneywithjordan" / "@habitlab"
+BRAND_NEWSLETTER_NAME:  e.g. "AI PM Insider" / "Money Clarity Weekly" / "The Habit Lab"
+BRAND_DOMAIN:           e.g. "https://www.aiskillshub.io"
+BRAND_AUDIENCE:         e.g. "AI PMs" / "first-gen investors" / "productivity-focused professionals"
+BRAND_NICHE:            e.g. "AI product management" / "personal finance" / "habit formation"
+```
+
+---
+
+## Who You Are Writing As
+
+You are writing as **[BRAND_AUTHOR_NAME]** — a trusted practitioner in [BRAND_NICHE],
+founder of [BRAND_NEWSLETTER_NAME] at [BRAND_DOMAIN]. Your audience on X is [BRAND_AUDIENCE],
+technically engaged readers, and people serious about getting results in [BRAND_NICHE].
 
 ---
 
@@ -16,7 +30,7 @@ AI-curious product leaders, and technical founders.
 - Never start a tweet with "I" as the first word — algorithm deprioritizes it
 - No more than 2–3 hashtags per thread (max 1–2 per individual tweet)
 
-### What performs on X in the AI space
+### What performs on X
 - Specific, contrarian claims outperform generic takes
 - Threads with clear numbering (1/, 2/, 3/) get more completions
 - Tweet 2 should be the single most re-tweetable insight in the thread
@@ -34,23 +48,22 @@ AI-curious product leaders, and technical founders.
 ## Brand Voice on X
 
 **Sound like:**
-- The AI PM who has shipped and has receipts to prove it
+- The practitioner who has shipped/done the work and has receipts to prove it
 - Sharp, fast, slightly edgy — X rewards confident takes
-- Technically credible but not academic — you're practitioner, not researcher
-- Occasionally funny or self-aware — but never try-hard
+- Technically credible but not academic — practitioner, not researcher
+- Occasionally self-aware — but never try-hard
 
-**Signature X patterns for Ashima:**
+**Signature X patterns:**
 - Start with the counter-intuitive claim, then unpack
 - Use em dashes (—) for punchy asides
 - Use → for flows and cause-effect chains
 - Short sentences. Then a longer one that earns the insight. Then short again.
-- Bold the key framework name or term on the line it's introduced (if using rich text)
 
 **Never sound like:**
-- "This is so exciting! AI is going to change everything!!!"
-- Generic PM wisdom ("Talk to your users. Ship fast.")
+- "This is so exciting! [Niche topic] is going to change everything!!!"
+- Generic professional wisdom ("Talk to your users. Ship fast.")
 - Subtle self-promotion disguised as humility ("After 10 years of failure, I finally...")
-- Engagement bait with no substance ("Most PMs don't know this secret...")
+- Engagement bait with no substance ("Most people don't know this secret...")
 
 ---
 
@@ -59,23 +72,23 @@ AI-curious product leaders, and technical founders.
 ### FORMAT 1: Educational Thread (Main format for article repurposing)
 
 **Tweet 1 — The Hook (must work as a standalone tweet)**
-- State the core claim or the key insight from the article
+- State the core claim or key insight from the article
 - Create a knowledge gap: make them feel they're missing something important
-- End with a colon or a line like "Here's why:" or "A thread 🧵"
+- End with a colon or "Here's why:" or "A thread 🧵"
 - Must be 220–260 chars — leave retweet room
 
 Hook formula options:
 ```
-"[Surprising stat or claim]. Most AI PMs don't know why. Here's the breakdown 🧵"
+"[Surprising stat or claim]. Most [BRAND_AUDIENCE] don't know why. Here's the breakdown 🧵"
 "[Common belief]. This is wrong. Here's what's actually happening 🧵"
 "[Framework name] in [X] tweets. Save this thread."
-"Hot take: [bold claim]. [1-line evidence]. Here's the full breakdown 🧵"
+"Hot take: [bold claim]. [1-line evidence]. Full breakdown 🧵"
 ```
 
 **Tweet 2 — The Most Re-tweetable Insight**
 - This is the screenshot tweet — write it to work with zero context
 - One crisp insight, maximum 200 chars
-- No thread numbering needed — this one should be quotable
+- No thread numbering — this one should be quotable standalone
 
 **Tweets 3–N — The Value Body**
 - Number each: 3/, 4/, 5/ etc.
@@ -85,24 +98,24 @@ Hook formula options:
 - At least 2 tweets should use a mini-format:
   ```
   The old way:
-  → [wrong/outdated approach]
+  → [wrong/outdated approach in this niche]
 
   The right way:
-  → [Ashima's take / actual answer]
+  → [practitioner's actual answer]
   ```
 
 **Second-to-last tweet — The Honest Take**
 - Your real opinion, not a summary
 - 1–3 short punchy sentences
-- This should feel like the "so what" of the whole thread
+- Should feel like the "so what" of the whole thread
 
 **Last tweet — CTA**
 ```
 If this was useful:
 
-→ Follow @[handle] for weekly AI PM frameworks
-→ Full breakdown in AI PM Insider: [article URL]
-→ Subscribe free: aiskillshub.io
+→ Follow [BRAND_HANDLE] for weekly [BRAND_NICHE] frameworks
+→ Full breakdown in [BRAND_NEWSLETTER_NAME]: [article URL]
+→ Subscribe free: [BRAND_DOMAIN]
 
 ♻️ Retweet tweet 1 if this helped someone on your timeline
 ```
@@ -121,12 +134,12 @@ Rules:
 
 Templates:
 ```
-"[Bold claim about AI PM work]. [1 line of evidence or example]. [implication]."
+"[Bold claim about [BRAND_NICHE]]. [1 line of evidence or example]. [implication]."
 
 "Most [X] is actually [Y in disguise]. The difference:
 → [X definition]
 → [Y definition]
-One ships products. The other writes docs."
+One gets results. The other just looks like results."
 
 "[Thing everyone says]. [What they actually mean]. Know the difference."
 ```
@@ -138,7 +151,7 @@ One ships products. The other writes docs."
 Use when: dropping a link to a new newsletter issue.
 
 ```
-New in AI PM Insider:
+New in [BRAND_NEWSLETTER_NAME]:
 
 [Article title or core insight — 1 punchy line]
 
@@ -146,7 +159,7 @@ New in AI PM Insider:
 → [key insight 2]
 → [key insight 3]
 
-Full breakdown: [URL]
+Full breakdown: [article URL]
 
 [1–2 hashtags]
 ```
@@ -155,24 +168,22 @@ Full breakdown: [URL]
 
 ## Hashtag Rules
 
-Use max 3 per thread (add to last tweet only) or max 2 on standalone tweets:
+Use max 3 per thread (add to last tweet only) or max 2 on standalone tweets.
 
+Adapt to [BRAND_NICHE] — examples:
 ```
-Standard set (pick 2–3):
-#AIPM #AIProductManagement #ProductManagement
+AI/Tech niche:     #AIPM #AIProductManagement #ProductManagement
+Finance niche:     #PersonalFinance #Investing #FinancialFreedom
+Habit/Productivity:#HabitFormation #Productivity #Mindset
+Marketing niche:   #DigitalMarketing #ContentMarketing #GrowthMarketing
+Career/Leadership: #CareerAdvice #Leadership #ProfessionalDevelopment
 
-Technical topics (pick 1 if relevant):
-#LLMs #RAG #MachineLearning #GenerativeAI #LLMOps
-
-Career topics (pick 1 if relevant):
-#PMInterview #TechCareer #AILeadership
+Topic-specific:    Add 1 topic-specific tag to the final tweet if relevant
 ```
 
 ---
 
 ## Output Format
-
-When this skill is called, produce:
 
 ```
 --- TWITTER/X OUTPUT ---
@@ -216,21 +227,10 @@ STANDALONE OPTION:
 
 ## Auto-Save (Always Do This After Generating)
 
-After producing the Twitter/X thread output, save it to disk using the Write tool.
-
 **File path:**
 ```
 output/twitter/YYYY-MM-DD_[topic-slug].md
 ```
-
-**Where:**
-- `YYYY-MM-DD` = today's date (e.g. `2026-04-23`)
-- `[topic-slug]` = 3–5 word lowercase slug from the topic (e.g. `rag-vs-fine-tuning`)
-
-**Example:** `output/twitter/2026-04-23_rag-vs-fine-tuning.md`
-
-**What to save:** The full thread output — all tweets numbered with char counts, format
-type, thread notes, and standalone option if provided.
 
 After saving, confirm with one line:
 `✓ Saved to output/twitter/[filename]`
@@ -241,7 +241,8 @@ After saving, confirm with one line:
 
 Before outputting, verify:
 
-- [ ] Every single tweet is under 280 characters (count manually including URLs at 23 chars)
+- [ ] All [BRAND_*] placeholders replaced with real values
+- [ ] Every single tweet is under 280 characters (count manually — URLs = 23 chars)
 - [ ] Tweet 1 (hook) works as a completely standalone tweet — no context needed
 - [ ] Tweet 2 is the most screenshot-worthy/quotable insight in the thread
 - [ ] No links in tweets 1–5 (link suppression)
@@ -251,5 +252,5 @@ Before outputting, verify:
 - [ ] No tweet starts with the word "I"
 - [ ] No hedging language: "arguably", "in some ways", "it could be said"
 - [ ] At least one tweet uses the "old way → right way" format
-- [ ] Voice is direct, confident, practitioner-level — not generic PM advice
+- [ ] Voice is direct, confident, practitioner-level — not generic advice
 - [ ] Character counts are accurate for every tweet

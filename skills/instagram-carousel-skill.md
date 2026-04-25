@@ -1,113 +1,200 @@
-# SKILL: Instagram Carousel Generator — AI PM Insider
+# SKILL: Instagram Carousel Generator — Universal Brand
 
-## What this skill produces
-A single self-contained HTML file that dynamically generates slides based on article content. Each slide is a 400×400px div styled to brand spec. The skill analyzes the article structure, extracts key concepts, frameworks, and diagrams, then creates slides that match the actual content rather than using fixed templates.
+## Brand Configuration (Fill This In Before Running)
 
-A JavaScript export function uses html2canvas to render each slide as a PNG for Instagram.
-No Canva. No external tools. One file → export → post.
+```
+BRAND_AUTHOR_NAME:      e.g. "Ashima Malik" / "Jordan Lee" / "Dr. Sarah Chen"
+BRAND_HANDLE:           e.g. "@aipminsider" / "@moneywithjordan" / "@habitlab"
+BRAND_NEWSLETTER_NAME:  e.g. "AI PM Insider" / "Money Clarity Weekly" / "The Habit Lab"
+BRAND_DOMAIN:           e.g. "aiskillshub.io" / "moneyclarity.com" / "habitlab.co"
+BRAND_NICHE_TAG:        e.g. "AI PRODUCT" / "PERSONAL FINANCE" / "HABIT SCIENCE"
+BRAND_COLOR_PRIMARY:    e.g. "#FF1F6B" (hot pink default) — the dominant slide background
+BRAND_COLOR_ACCENT:     e.g. "#FFD700" (yellow default) — badge + highlight color
+BRAND_COLOR_ACCENT2:    e.g. "#00D4FF" (cyan default) — secondary accent / comparison B
+```
 
 ---
 
-## Brand Design System (hardcoded — never change these)
+## What This Skill Produces
 
-### Colors
+A single self-contained HTML file that dynamically generates slides based on article content.
+Each slide is a **400×400px** div styled to brand spec. The skill analyzes article structure,
+extracts key concepts, frameworks, and diagrams, then creates slides that match the actual
+content rather than using fixed templates.
+
+A JavaScript export function uses html2canvas to render each slide as a PNG for Instagram.
+No Canva. No external tools. One file → open in browser → export → post.
+
+---
+
+## Brand Design System
+
+### Colors (Vibrant — Based on Reference Palette)
+
 ```
---bg:        #20B2AA   (slide background, teal)
---card:      #F5F5F5   (elevated surfaces, light)
---border:    #E0E0E0   (subtle borders)
---cream:     #2C3E50   (primary text on light, dark blue-gray)
---taupe:     #7F8C8D   (secondary text, gray)
---accent:    #F2C12D   (yellow — primary accent color)
---accent2:   #FF69B4   (pink — secondary accent for comparisons, CTAs)
---muted:     #95A5A6   (tertiary text, labels)
---grid-bg:   accent at 4% opacity, 32px grid (cover + CTA slides only)
+--bg:           [BRAND_COLOR_PRIMARY]  default #FF1F6B  ← hot pink slide background
+--bg-dark:      #1A1A2E               ← deep navy for stat + CTA slides
+--bg-alt:       #2D1B69               ← deep purple for diagram slides
+--text-primary: #FFFFFF               ← white — all main text
+--text-secondary: rgba(255,255,255,0.80) ← slightly muted white
+--text-muted:   rgba(255,255,255,0.55) ← labels, captions
+--accent:       [BRAND_COLOR_ACCENT]  default #FFD700  ← yellow badges, highlights
+--accent2:      [BRAND_COLOR_ACCENT2] default #00D4FF  ← cyan secondary accent
+--accent3:      #FF6B35               ← orange for tertiary callouts
+--badge-bg:     [BRAND_COLOR_ACCENT]  default #FFD700  ← label/tag pill background
+--badge-text:   #1A1A1A               ← dark text on yellow badge
+--card-bg:      rgba(255,255,255,0.12) ← frosted card surfaces on colored bg
+--card-border:  rgba(255,255,255,0.20) ← card borders
 ```
 
-### Typography
+**Why vibrant?** Carousels compete for attention in a fast-scroll feed.
+High-contrast, saturated colors stop the scroll. Pink + yellow + white = instant standout.
+
+### Typography (Heavy Sans-Serif — Visible at Phone Scale)
+
 ```
-Headings:     Georgia, serif — bold, 700 weight
-              Sizes: 38px (cover), 22px (section titles), 16px (slide titles)
-Labels/UI:    system-ui, sans-serif — clean, 500-600 weight
-              Sizes: 9-10px (labels/tags), 12-13px (body), 11px (captions)
-Letter-spacing: 0.12-0.16em on uppercase labels
-Brand tag:    AI PM INSIDER — always uppercase, 10px, letter-spacing .14em
+Headings:     'Arial Black', 'Helvetica Neue Black', Impact, sans-serif
+              Sizes: 36px (cover title), 22px (section titles), 16px (slide titles)
+              Weight: 900 / black — never below 700 on colored backgrounds
+Body/Labels:  system-ui, -apple-system, sans-serif
+              Sizes: 11px (body bullets), 12px (card titles), 9–10px (labels/captions)
+Badge/Tag:    system-ui, 600 weight, 9px, letter-spacing 0.14em, ALL CAPS
+Brand credit: system-ui, 500 weight, 9px, letter-spacing 0.10em
 ```
 
-### Slide dimensions
+**No serif fonts** — Georgia and similar fonts lose legibility on phone screens at slide scale.
+
+### Slide Dimensions
+
 ```
 Width:  400px
 Height: 400px
-Border-radius: 4px (slides), 6-8px (internal cards)
+Overflow: hidden — NOTHING exits the slide boundary
+Border-radius: 8px (slides), 10–12px (internal cards)
 Export scale: 3× (outputs at 1200×1200px — Instagram optimal)
 ```
 
-### Accent bar
-Every slide gets a 4px left-edge accent bar in --accent color.
-Cover and CTA slides get a subtle grid background (accent color at 4% opacity, 32px grid).
+### Visual Identity Elements
 
-### Slide numbering
-Cover slide shows a circular badge (top-right): border in --accent, slide number inside.
+- **Badge pill** (top area): `[BRAND_NICHE_TAG]` or topic tag — yellow bg (#FFD700), dark text, 9px, letter-spacing 0.14em, 4px border-radius, padding 3px 8px
+- **Slide number badge** (top right): circular 28px, white border 1.5px, white number inside
+- **Bottom brand strip**: `[BRAND_DOMAIN] · [BRAND_AUTHOR_NAME]` — 9px, white at 60% opacity
+- **Accent bar**: 3px left edge in --accent on content slides; none on full-bleed stat/CTA slides
 
 ---
 
-## Slide Types — Use These Building Blocks
+## Text Safety Rules (No Text Gets Cut — Ever)
 
-### TYPE A: Cover slide
-- Full dark background with grid overlay
-- Accent bar (left edge)
-- Slide number badge (top right, circular, accent border)
-- Tag line: "AI PM INSIDER · [Topic Name]" — uppercase, 10px, --accent color
-- Headline: 3 lines max, 38px serif, cream + ONE word/phrase in --accent
-- Subheadline: 13px system-ui, --taupe, 2 lines max
-- Brand credit: "aiskillshub.io · Ashima Malik" — 10px, muted
+These rules are non-negotiable. A slide that clips text is worse than a simpler slide.
 
-### TYPE B: Problem / Hook slide
-- Numbered list of 2–3 pain points
-- Each item: left border in --accent, number in --accent (18px bold), text in --taupe
-- Strong in cream for the pain point title, body in taupe
-- Slide label: "THE PROBLEM" — 9px uppercase, --accent
+### Font Size Limits by Content Volume
+| Lines of text | Max font size | Max characters/line |
+|---|---|---|
+| 1 line (big stat / headline) | 48px | 18 chars |
+| 2 lines (cover subtitle) | 28px | 22 chars |
+| 3 lines (cover title) | 24px | 20 chars |
+| 4–5 bullets | 11px | 28 chars |
 
-### TYPE C: Architecture / Diagram slide
-- Inline SVG diagram drawn at viewBox 340×220
-- Background of SVG elements: #1A1A1A boxes, #161616 for containers
-- Use --accent (#00E5FF) for primary flow / key boxes
-- Use --accent2 (#7B61FF) for secondary elements (LLM, output, destination)
-- Use #333 + dashed stroke for supporting elements (knowledge base, cache)
-- Arrow color: match the box they point to
-- Text inside SVG: font-family system-ui, 7-9px, fill matches the element ramp
-- Caption below SVG: 10px system-ui, #555, centered, 1 sentence max
-- Keep diagrams to MAX 6–8 nodes — Instagram is read at 375px wide on a phone
+### Overflow Prevention CSS (apply to every slide)
+```css
+.slide {
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 20px 22px;          /* safe zone — never reduce below 16px */
+  word-break: break-word;
+  hyphens: auto;
+}
+.slide * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.text-block {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+```
 
-### TYPE D: Framework / Steps slide
-- 3–4 step rows
-- Each row: circular step number (28px, accent border) + content card
-- Content card: 12px bold title in cream, 10px desc in muted
-- Thin connector line between steps (1px, --accent at 30% opacity)
-- Slide label + title follow standard pattern
+### Content Limits Per Slide
+- Cover: max 6 words per line × 3 lines for title; max 12 words for subtitle
+- Bullet slides: max 4 bullets × max 20 words each
+- Step slides: max 4 steps × max 2 lines description each
+- Comparison: max 4 bullets per column × max 15 words each
+- Stat slides: number + 2-line label only — no additional text
+- If content exceeds limits → **split into 2 slides**, never compress
 
-### TYPE E: Comparison slide
-- 2-column grid
-- Left column: --accent top border (RAG / Option A)
-- Right column: --accent2 top border (Fine-tuning / Option B)
-- Bullet items: 4px dot matching column color, 10px text in --taupe
-- Verdict bar at bottom: #0F0F0F background, 1px border #222, --accent bold for key phrase
+### Auto-Truncation Rule
+If generated content would overflow: truncate at the last full word that fits, add "…" only
+on bullet points. Never truncate headlines — shorten them instead.
 
-### TYPE F: Stat / Data slide
-- Full dark background with grid overlay
-- Large number: 80px, 700 weight, system-ui, --accent
-- Stat label: 13px system-ui, --taupe, centered, max 2 lines
-- Horizontal rule: 60px wide, 1px, --accent, centered
-- Source credit: 9px uppercase, #444
+---
 
-### TYPE G: CTA slide (always last)
-- Grid background + accent bar
-- "IF THIS WAS USEFUL" — 11px uppercase, --accent
-- "Save this. Follow for more." — 30px serif bold, cream
-- Body: 12px, #555, 2 lines about newsletter value
-- Two buttons (styled divs):
-  - Primary: --accent background, black text, "Save this post"
-  - Secondary: transparent, --accent2 border + text, "Subscribe free → aiskillshub.io"
-- Handle: "@aipminsider · Ashima Malik" — 10px uppercase muted
+## Slide Types — Building Blocks
+
+### TYPE A: Cover Slide
+- Background: solid `--bg` ([BRAND_COLOR_PRIMARY])
+- Top area: badge pill `[BRAND_NICHE_TAG]` + right-side slide number badge
+- Title: 36px Arial Black, white, max 3 lines, ONE key phrase wrapped in `<span style="color:var(--accent)">`
+- Subtitle: 14px system-ui, white at 80%, max 2 lines, max 12 words
+- Bottom strip: `[BRAND_DOMAIN] · [BRAND_AUTHOR_NAME]` in white at 55%
+- Grid overlay (optional): accent at 4% opacity, 28px grid — adds texture without noise
+
+### TYPE B: Problem / Hook Slide
+- Background: `--bg` (brand primary)
+- Label badge: "THE PROBLEM" or "WHY THIS MATTERS" — yellow pill
+- Each pain point: frosted card (`--card-bg`), left 3px border in `--accent`, bold white title 12px, desc 11px white 80%
+- Max 3 pain points — if 4+, use 2 separate TYPE B slides
+
+### TYPE C: Diagram Slide
+- Background: `--bg-alt` (#2D1B69 deep purple) — contrast from main pink slides
+- Label badge: "HOW IT WORKS" or descriptive topic — yellow pill
+- Inline SVG viewBox="0 0 340 200"
+- Node styles:
+  - Input/User: white fill, `--accent` 1.5px stroke, dark text
+  - Processing/Core: `rgba(255,255,255,0.15)` fill, white 1px stroke, white text
+  - Output/Result: white fill, `--accent2` 1.5px stroke, `--accent2` text
+  - Supporting: `rgba(255,255,255,0.08)` fill, white dashed 1px stroke, muted text
+- Arrows: `--accent` (#FFD700) stroke, arrowhead marker
+- Caption: 9px, white at 60%, centered below SVG, max 1 line
+- Max 6–8 nodes, max 8 arrows, node labels max 12 characters
+
+### TYPE D: Framework / Steps Slide
+- Background: `--bg`
+- Label badge: "FRAMEWORK" or "STEP [N] OF [N]" — yellow pill
+- Title: 18px Arial Black, white, one phrase in `--accent`
+- Steps: flex row — circular step number (26px, white border 1.5px, white text bold) + frosted card
+  - Card: 12px bold white title, 10px white 75% desc, max 2 lines desc
+  - Connector: 1px dashed white at 25% opacity
+- Max 4 steps per slide — split if more
+
+### TYPE E: Comparison Slide
+- Background: `--bg`
+- Label badge: "COMPARE" or "[A] vs [B]" — yellow pill
+- Two columns with frosted card containers:
+  - Left column: 2px solid `--accent` top border, title in `--accent`
+  - Right column: 2px solid `--accent2` top border, title in `--accent2`
+- Bullets: 5px dot matching column color + 10px white 80% text
+- Verdict bar at bottom: white 15% bg, border-radius 6px, centered verdict in `--accent`
+- Max 4 bullets per column
+
+### TYPE F: Stat / Data Slide
+- Background: `--bg-dark` (#1A1A2E) — dark navy for contrast and gravitas
+- Large number: 64px Arial Black, `--accent` color, centered
+- Horizontal rule: 50px wide, 2px, `--accent`, centered
+- Stat label: 14px system-ui, white 80%, centered, max 2 lines, max 16 words
+- Source: 9px uppercase, white at 45%, centered, max 1 line
+- No other elements — keep it clean and punchy
+
+### TYPE G: CTA Slide (Always Last)
+- Background: `--bg-dark` (#1A1A2E)
+- Grid overlay: white at 3% opacity, 28px grid
+- Top: label badge "IF THIS HELPED" — yellow pill
+- Main text: "Save this. Follow for more." — 28px Arial Black, white
+- Sub-copy: 12px system-ui, white 70%, max 2 lines — newsletter value prop
+- Two action buttons:
+  - Primary: `--accent` bg, dark text 11px bold — "Save this post"
+  - Secondary: transparent, 1.5px solid `--accent2`, `--accent2` text 11px — "Subscribe free → [BRAND_DOMAIN]"
+- Brand handle: `[BRAND_HANDLE] · [BRAND_AUTHOR_NAME]` — 9px uppercase, white 50%
 
 ---
 
@@ -115,143 +202,97 @@ Cover slide shows a circular badge (top-right): border in --accent, slide number
 
 ### Input Analysis
 The skill receives the full article content and:
-1. **Extracts key sections** - Problem statements, frameworks, comparisons, diagrams
-2. **Identifies architecture flows** - Any workflow, system design, or process diagrams
-3. **Maps content to slide types** - Based on complexity and visual needs
-4. **Generates slide count dynamically** - 7-12 slides depending on article depth
+1. Extracts key sections — problem statements, frameworks, comparisons, diagrams, stats
+2. Identifies architecture flows — any workflow or process with → arrows
+3. Maps content to slide types — based on complexity and visual needs
+4. Generates slide count dynamically — 7–12 slides depending on article depth
 
-### Content-to-Slide Mapping Rules
+### Content-to-Slide Mapping
 | Article Content | Slide Type | When Used |
 |---|---|---|
-| Bold claim/hook | TYPE A (Cover) | Always first slide |
-| Pain points/"Why this matters" | TYPE B (Problem) | When article has problem section |
-| Architecture diagrams (→ flows) | TYPE C (Diagram) | Any workflow or system design |
-| Numbered frameworks/steps | TYPE D (Framework) | When article has step-by-step |
+| Bold claim/hook | TYPE A (Cover) | Always first |
+| Pain points / "Why this matters" | TYPE B (Problem) | When article has problem section |
+| → arrow flows / system designs | TYPE C (Diagram) | Any workflow or architecture |
+| Numbered frameworks / steps | TYPE D (Framework) | Step-by-step content |
 | Comparison tables | TYPE E (Comparison) | When article compares options |
-| Key statistics/data | TYPE F (Stat) | When article cites specific numbers |
-| Takeaways/summary | TYPE D (Framework) | For final insights |
-| CTA/newsletter | TYPE G (CTA) | Always last slide |
+| Key statistics / data | TYPE F (Stat) | Specific numbers cited |
+| Takeaways / summary | TYPE D (Framework) | Final insights |
+| CTA / subscribe | TYPE G (CTA) | Always last |
 
-### Dynamic Slide Count Logic
+### Slide Count Logic
 - **Simple topic**: 7 slides (Cover + Problem + 1 Framework + 1 Comparison + 1 Stat + CTA)
 - **Medium topic**: 9 slides (Cover + Problem + 2 Frameworks + 1 Comparison + 2 Diagrams + CTA)
 - **Complex topic**: 12 slides (Cover + Problem + 3 Frameworks + 2 Comparisons + 3 Diagrams + 1 Stat + CTA)
 
-The skill analyzes article structure and chooses appropriate complexity.
-
 ---
 
-### Enhanced Diagram Rules for Instagram
+## HTML Generation Spec
 
-Instagram is read on a 375px-wide phone screen. Diagrams that work in a newsletter
-article will NOT work at Instagram slide scale. Follow these rules every time:
+### Full CSS Variables Block
+```css
+:root {
+  --bg:            [BRAND_COLOR_PRIMARY]; /* default: #FF1F6B */
+  --bg-dark:       #1A1A2E;
+  --bg-alt:        #2D1B69;
+  --text-primary:  #FFFFFF;
+  --text-secondary:rgba(255,255,255,0.80);
+  --text-muted:    rgba(255,255,255,0.55);
+  --accent:        [BRAND_COLOR_ACCENT];  /* default: #FFD700 */
+  --accent2:       [BRAND_COLOR_ACCENT2]; /* default: #00D4FF */
+  --accent3:       #FF6B35;
+  --badge-bg:      [BRAND_COLOR_ACCENT];
+  --badge-text:    #1A1A1A;
+  --card-bg:       rgba(255,255,255,0.12);
+  --card-border:   rgba(255,255,255,0.20);
+}
 
-### Architecture Diagram Extraction
-The skill automatically identifies and converts:
-- **Arrow flows (→)**: Convert to SVG node diagrams
-- **Workflow blocks**: Convert to structured boxes with connections
-- **System components**: Map to visual hierarchy (input → process → output)
-- **Comparison tables**: Convert to visual comparison slides
-- **Step-by-step frameworks**: Convert to numbered flow diagrams
+/* BASE SLIDE */
+.slide {
+  width: 400px; height: 400px;
+  overflow: hidden; box-sizing: border-box;
+  border-radius: 8px; padding: 20px 22px;
+  background: var(--bg);
+  font-family: system-ui, -apple-system, sans-serif;
+  display: none; flex-direction: column;
+  position: relative;
+  word-break: break-word; hyphens: auto;
+}
+.slide.active { display: flex; }
+.slide * { box-sizing: border-box; max-width: 100%; }
 
-### Dynamic Diagram Generation
-Based on article content, the skill:
-1. **Scans for → arrows** indicating workflows
-2. **Extracts table structures** for comparisons
-3. **Identifies numbered lists** as frameworks
-4. **Creates SVG representations** optimized for mobile viewing
-5. **Maintains brand colors** and visual hierarchy
+/* BADGE PILL */
+.badge {
+  display: inline-flex; align-items: center;
+  background: var(--badge-bg); color: var(--badge-text);
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 3px 9px; border-radius: 4px;
+}
 
-### Max complexity (per diagram)
-- Maximum 6–8 nodes per diagram
-- Maximum 2 hierarchy levels
-- No more than 8 arrows total
-- No labels longer than 12 characters per node
+/* SLIDE NUMBER BADGE */
+.slide-num {
+  position: absolute; top: 18px; right: 18px;
+  width: 26px; height: 26px; border-radius: 50%;
+  border: 1.5px solid #FFFFFF;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 700; color: #FFFFFF;
+}
 
-### Font sizes inside SVG (for Instagram readability)
-- Node titles: 9px, font-weight 600
-- Node subtitles: 8px, color #555 or #C4B5A5
-- Step labels (e.g. "STEP 1"): 7px, letter-spacing .08em, color #444
-- Arrow labels: avoid entirely — use node subtitle instead
+/* BRAND STRIP */
+.brand-strip {
+  position: absolute; bottom: 14px; left: 22px; right: 22px;
+  font-size: 9px; letter-spacing: 0.10em;
+  color: rgba(255,255,255,0.55); text-transform: uppercase;
+}
 
-### What to diagram vs what to describe
-| Topic from Article | Use diagram? | Type |
-|---|---|---|
-| RAG architecture (→ flow) | YES | Flow: Query → Retriever → LLM → Answer |
-| Fine-tuning pipeline | YES | Flow: Data → Train → Eval → Deploy |
-| System design (2-layer) | YES | Structural: 2 containers max |
-| Multi-stage pipeline (5+ steps) | YES | Break into multiple diagrams |
-| Comparison (RAG vs FT) | YES | Visual comparison slide |
-| Abstract concept (attention) | YES | Simplified: 4–5 nodes only |
-| Numbered framework | YES | Step-by-step visual flow |
-| Table with data | YES | Convert to visual comparison |
-
-### Color mapping for diagrams
+/* FROSTED CARD */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 10px; padding: 10px 12px;
+  overflow: hidden;
+}
 ```
-User / Input:         #F5F5F5 box + #F2C12D (accent) border + accent text
-Processing / Core:    #E8E8E8 box + #E0E0E0 border + #7F8C8D text
-Output / Result:      #F5F5F5 box + #FF69B4 (accent2) border + accent2 text
-Supporting / Cache:   #EEEEEE box + #E0E0E0 dashed border + #95A5A6 text
-Arrows (primary flow): #F2C12D stroke
-Arrows (secondary):    #95A5A6 stroke
-```
-
----
-
-## Content-Driven HTML Generation
-
-### Input Processing
-The skill receives article content as input and processes it through these stages:
-
-1. **Content Analysis Engine**
-   - Extracts title, subtitle, and key claims
-   - Identifies problem statements and pain points
-   - Scans for workflow arrows (→) and numbered frameworks
-   - Detects comparison tables and statistical data
-   - Maps FAQ content to potential additional slides
-
-2. **Slide Planning Algorithm**
-   ```javascript
-   function planSlides(articleContent) {
-     const slides = [];
-     
-     // Always include cover and CTA
-     slides.push({type: 'cover', content: extractMainClaim(articleContent)});
-     
-     // Dynamic content slides based on article structure
-     if (hasProblemSection(articleContent)) {
-       slides.push({type: 'problem', content: extractPainPoints(articleContent)});
-     }
-     
-     const workflows = extractWorkflows(articleContent);
-     workflows.forEach(flow => {
-       slides.push({type: 'diagram', content: convertToSVG(flow)});
-     });
-     
-     const frameworks = extractFrameworks(articleContent);
-     frameworks.forEach(framework => {
-       slides.push({type: 'framework', content: framework});
-     });
-     
-     if (hasComparisons(articleContent)) {
-       slides.push({type: 'comparison', content: extractComparisons(articleContent)});
-     }
-     
-     if (hasStatistics(articleContent)) {
-       slides.push({type: 'stat', content: extractKeyStat(articleContent)});
-     }
-     
-     slides.push({type: 'cta', content: 'standard'});
-     
-     return slides;
-   }
-   ```
-
-3. **Dynamic HTML Structure**
-   - Generates slide divs based on planned content
-   - Each slide gets appropriate CSS class and content
-   - Navigation dots and arrows adjust to slide count
-   - Export function works with dynamic slide numbers
 
 ### Dynamic HTML Template
 ```html
@@ -259,266 +300,243 @@ The skill receives article content as input and processes it through these stage
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>AI PM Insider — [Dynamic Topic] Carousel</title>
+<title>[BRAND_NEWSLETTER_NAME] — [Topic] Carousel</title>
 <style>
-  /* Full CSS — all variables, slide types, layout */
-  :root {
-    --bg: #20B2AA; --card: #F5F5F5; --border: #E0E0E0;
-    --cream: #2C3E50; --taupe: #7F8C8D;
-    --accent: #F2C12D; --accent2: #FF69B4; --muted: #95A5A6;
-  }
-  /* Import html2canvas from CDN */
+  /* Full CSS block above */
+  body { background: #0F0F0F; display:flex; flex-direction:column; align-items:center; padding:20px; font-family:system-ui; }
+  .carousel-wrap { max-width:500px; width:100%; }
+  .viewer { position:relative; width:400px; }
+  .nav-dots { display:flex; gap:6px; justify-content:center; margin-top:12px; }
+  .dot { width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.3);cursor:pointer; }
+  .dot.active { background:#FFD700; }
+  .nav-arrows { display:flex; gap:10px; justify-content:center; margin-top:10px; }
+  .nav-arrows button { background:rgba(255,255,255,0.1); color:#fff; border:1px solid rgba(255,255,255,0.2); border-radius:6px; padding:6px 16px; cursor:pointer; }
+  .export-panel { background:#1A1A1A; border:1px solid #333; border-radius:8px; padding:16px; margin-top:16px; color:#fff; }
+  .export-instructions { font-size:12px; color:#aaa; margin:0 0 12px; }
+  .export-buttons { display:flex; gap:10px; }
+  .export-buttons button { background:#FFD700; color:#111; border:none; border-radius:6px; padding:8px 16px; font-weight:700; font-size:12px; cursor:pointer; }
+  .export-buttons button:last-child { background:transparent; color:#00D4FF; border:1px solid #00D4FF; }
 </style>
 </head>
 <body>
 <div class="carousel-wrap">
-
-  <!-- DYNAMIC SLIDE VIEWER -->
   <div class="viewer">
-    <!-- Slides generated dynamically based on article content -->
-    <!-- Example structure (actual slides vary by content) -->
-    <div class="slide s-cover active" id="slide-1">[Dynamic Cover Content]</div>
-    <div class="slide s-problem" id="slide-2">[Extracted Problem Content]</div>
-    <div class="slide s-diagram" id="slide-3">[SVG from Article Workflow]</div>
-    <div class="slide s-framework" id="slide-4">[Article Framework Steps]</div>
-    <!-- ... more slides based on content ... -->
-    <div class="slide s-cta" id="slide-N">[Standard CTA]</div>
+    <!-- Slides generated dynamically — see slide type specs above -->
+    <div class="slide s-cover active" id="slide-1"><!-- TYPE A content --></div>
+    <div class="slide s-problem" id="slide-2"><!-- TYPE B content --></div>
+    <!-- ... more slides based on article content ... -->
+    <div class="slide s-cta" id="slide-N"><!-- TYPE G content --></div>
   </div>
-
-  <!-- DYNAMIC NAVIGATION DOTS -->
-  <div class="nav-dots">
-    <!-- Dots generated based on actual slide count -->
+  <div class="nav-dots"><!-- dots auto-generated to match slide count --></div>
+  <div class="nav-arrows">
+    <button onclick="prevSlide()">← Prev</button>
+    <button onclick="nextSlide()">Next →</button>
   </div>
-
-  <!-- PREV / NEXT ARROWS -->
-  <div class="nav-arrows">...</div>
-
-  <!-- EXPORT CONTROLS -->
-  <div class="export-row">
-    <button onclick="exportCurrent()">Export current slide</button>
-    <button onclick="exportAll()">Export all slides</button>
+  <div class="export-panel">
+    <p class="export-instructions">
+      Step 1: Click "Export All Slides" →
+      Step 2: [N] PNGs download to Downloads folder →
+      Step 3: Upload to Instagram as a carousel post
+    </p>
+    <div class="export-buttons">
+      <button onclick="exportAll()" id="export-all-btn">Export All Slides (→ Instagram PNGs)</button>
+      <button onclick="exportSlide(currentSlide)">Export Current Slide</button>
+    </div>
   </div>
-
 </div>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
-  // Dynamic slide count variable
-  const TOTAL_SLIDES = [DYNAMIC_COUNT_FROM_ANALYSIS];
-  
-  // Navigation logic adapts to slide count
-  // exportSlide(idx) — renders one slide to PNG at 3× scale
-  // exportCurrent() — exports active slide
-  // exportAll() — loops all slides with 300ms delay between exports
+  const TOTAL_SLIDES = [DYNAMIC_COUNT]; // set from content analysis: 7–12
+  let currentSlide = 0;
+
+  function showSlide(idx) {
+    document.querySelectorAll('.slide').forEach((s,i) => {
+      s.style.display = i === idx ? 'flex' : 'none';
+      s.classList.toggle('active', i === idx);
+    });
+    document.querySelectorAll('.dot').forEach((d,i) => d.classList.toggle('active', i === idx));
+    currentSlide = idx;
+  }
+  function prevSlide() { showSlide(currentSlide > 0 ? currentSlide - 1 : TOTAL_SLIDES - 1); }
+  function nextSlide() { showSlide(currentSlide < TOTAL_SLIDES - 1 ? currentSlide + 1 : 0); }
+
+  async function exportSlide(idx) {
+    const slide = document.getElementById('slide-' + (idx + 1));
+    slide.style.display = 'flex';
+    await new Promise(r => setTimeout(r, 80));
+    const canvas = await html2canvas(slide, {
+      width: 400, height: 400, scale: 3,
+      backgroundColor: null, useCORS: true, logging: false
+    });
+    slide.style.display = idx === currentSlide ? 'flex' : 'none';
+    const a = document.createElement('a');
+    a.download = '[brand-slug]-slide-' + String(idx + 1).padStart(2, '0') + '.png';
+    a.href = canvas.toDataURL('image/png');
+    a.click();
+  }
+
+  async function exportAll() {
+    const btn = document.getElementById('export-all-btn');
+    btn.textContent = 'Exporting... (0/' + TOTAL_SLIDES + ')';
+    btn.disabled = true;
+    for (let i = 0; i < TOTAL_SLIDES; i++) {
+      await exportSlide(i);
+      btn.textContent = 'Exporting... (' + (i+1) + '/' + TOTAL_SLIDES + ')';
+      await new Promise(r => setTimeout(r, 350));
+    }
+    btn.textContent = '✓ Done — check your Downloads folder';
+    btn.disabled = false;
+  }
 </script>
 </body>
 </html>
 ```
 
-### Export function (always use this exact implementation)
-```javascript
-async function exportSlide(idx) {
-  const slide = document.getElementById('slide-' + (idx + 1));
-  const wasActive = slide.classList.contains('active');
-  slide.style.display = 'flex';
-  await new Promise(r => setTimeout(r, 80));
-  const canvas = await html2canvas(slide, {
-    width: 400,
-    height: 400,
-    scale: 3,
-    backgroundColor: null,
-    useCORS: true,
-    logging: false
-  });
-  if (!wasActive) slide.style.display = 'none';
-  const a = document.createElement('a');
-  a.download = 'ai-pm-insider-slide-' + (idx + 1) + '.png';
-  a.href = canvas.toDataURL('image/png');
-  a.click();
-}
+---
 
-async function exportAll() {
-  for (let i = 0; i < TOTAL_SLIDES; i++) {
-    await exportSlide(i);
-    await new Promise(r => setTimeout(r, 300));
-  }
-}
-```
+## Cover Headline Formula (Niche-Adaptive)
+
+Pick the pattern that fits the article:
+- **Contrarian**: "Stop [doing wrong thing]" — works in any niche
+- **Curiosity**: "Why [surprising claim about niche topic]"
+- **Practical**: "The [N]-Step [Framework Name]"
+- **Pain**: "Most [audience] [mistake]. Here's the fix."
+- **Direct**: "[Outcome] in [timeframe/steps]"
+
+Always: ONE key phrase in `--accent` color. Max 6 words per line. Max 3 lines.
+Never start with a question — statements outperform questions on Instagram.
 
 ---
 
-## Content Rules (Brand Voice on Instagram)
-
-### Cover headline formula
-One of these patterns:
-- "Stop [doing wrong thing]" — contrarian hook
-- "Why [surprising claim]" — curiosity hook
-- "The [number]-[unit] [framework/rule]" — practical hook
-- "Most AI PMs [mistake]. Here's the fix." — pain hook
-
-Always: ONE key phrase or word in --accent color. Max 6 words per line. Max 3 lines.
+## Slide Content Rules (Voice on Instagram)
 
 ### Slide titles
-- 22px serif, cream + one phrase in --accent
+- 18–22px Arial Black, white + one phrase in `--accent`
 - Max 8 words total
-- Never start with "How to" — too generic
+- Never start with "How to" — too generic, doesn't stop scroll
 
-### Body text on slides
-- Max 2 lines of body text per content block
-- Max 20 words per bullet point
-- If it needs more than 20 words, split into two bullets
-- Never use full sentences — use fragments: "Adds retrieval latency" not "This approach adds retrieval latency"
+### Body text
+- Max 2 lines per content block
+- Max 20 words per bullet
+- Use fragments: "Eliminates retrieval latency" not "This approach eliminates retrieval latency"
+- Every bullet must be independently readable — no "see slide 3"
 
-### What NOT to put on Instagram slides
-- No code blocks (too small to read)
-- No tables (use comparison slide TYPE E instead)
-- No more than 4 bullet points per slide
+### What NOT to put on slides
+- No code blocks (too small, unreadable at phone scale)
+- No tables (use TYPE E comparison slide instead)
+- No more than 4 bullets per slide
 - No URLs except on CTA slide
-- No hashtags inside slides (add in Instagram caption, not slide)
+- No hashtags inside slides (put in caption, not slide)
 
 ---
 
-## Instagram Caption (generate alongside carousel)
-
-Always output a caption block after the HTML file:
+## Instagram Caption (Generate Alongside Carousel)
 
 ```
 --- INSTAGRAM CAPTION ---
 
-[Hook line — restate cover headline as a question or bold claim]
+[Hook — bold claim or restate cover headline as a question or statement]
 
 Swipe to learn:
 → [what slide 2 covers]
-→ [what slide 3-4 covers]
-→ [what slide 5-6 covers]
-→ The [framework/rule/decision] that changes how you think about this
+→ [what content slides 3–N cover, summarized by theme]
+→ The [framework/rule/insight] that changes how you think about [topic]
 
-Save this for your next [roadmap / interview / sprint / design review].
+Save this for your next [relevant moment for your audience].
 
-Follow @aipminsider for weekly AI PM frameworks, system design teardowns,
-and interview prep.
+Follow [BRAND_HANDLE] for [brief value prop — e.g. "weekly frameworks on X topic"].
 
-Full article + examples: aiskillshub.io
+Full breakdown: [BRAND_DOMAIN]
 
 ---
 HASHTAGS (paste as first comment, not in caption):
-#AIProductManager #AIPM #ProductManagement #ArtificialIntelligence
-#MachineLearning #AIStrategy #ProductStrategy #TechLeadership
-#AIEngineering #SystemDesign #[topic-specific tag] #[topic-specific tag]
+[5 niche hashtags] [2 topic-specific hashtags] [2 broad hashtags]
 ```
 
 ---
 
-## Dynamic Content Generation Process
+## Diagram Rules (Instagram-Scale SVG)
 
-### Skill Input Requirements
-The skill expects:
-1. **Full article content** - Complete markdown from the SEO/AEO skill
-2. **Article metadata** - Title, primary keyword, topic focus
-3. **Architecture elements** - Any workflows, diagrams, frameworks identified
+Instagram renders at 375px wide on most phones. Complex diagrams become unreadable.
 
-### Generation Workflow
-```javascript
-function generateCarousel(articleContent, metadata) {
-  // Step 1: Analyze article structure
-  const analysis = analyzeArticle(articleContent);
-  
-  // Step 2: Plan slide sequence based on content
-  const slidePlan = planSlides(analysis);
-  
-  // Step 3: Generate dynamic HTML
-  const html = generateHTML(slidePlan, metadata);
-  
-  // Step 4: Create Instagram caption from article
-  const caption = generateCaption(articleContent, slidePlan);
-  
-  return { html, caption, slideCount: slidePlan.length };
-}
-```
+### Max complexity
+- Max 6–8 nodes per diagram
+- Max 2 hierarchy levels
+- Max 8 arrows total
+- Node labels: max 12 characters — abbreviate if needed
+- No arrow labels — use node subtitles instead
 
-### Content Extraction Rules
-- **Main claim**: Extract from article title + first paragraph
-- **Problem points**: Find "Why this matters" or pain point sections
-- **Workflows**: Scan for → arrows and convert to SVG diagrams
-- **Frameworks**: Extract numbered steps and create visual flows
-- **Comparisons**: Convert article tables to comparison slides
-- **Statistics**: Pull key data points for stat slides
-- **CTA**: Use standard newsletter promotion
+### Font sizes inside SVG
+- Node title: 9px, font-weight 600, white
+- Node subtitle: 8px, white at 70%
+- Step label (e.g. "STEP 1"): 7px, letter-spacing 0.08em, white at 50%
+
+### Conversion rules (article → SVG)
+| Article element | Convert to |
+|---|---|
+| A → B → C (arrow flow) | Linear node chain |
+| Nested list (2 levels) | Parent + child nodes |
+| Comparison table | TYPE E slide (not diagram) |
+| 5+ step process | Break into 2 TYPE C slides |
 
 ---
 
-## Auto-Save (Content-Driven)
+## Auto-Save
 
-After generating the dynamic HTML carousel, save two things:
+After generating, save two files:
 
-**1. HTML file (the dynamic carousel):**
+**1. HTML carousel:**
 ```
-output/instagram/YYYY-MM-DD_[extracted-topic-slug].html
-```
-
-**2. Caption file (the Instagram caption + hashtags):**
-```
-output/instagram/YYYY-MM-DD_[extracted-topic-slug]-caption.md
+output/instagram/YYYY-MM-DD_[topic-slug].html
 ```
 
-**Where:**
-- `YYYY-MM-DD` = today's date (e.g. `2026-04-23`)
-- `[extracted-topic-slug]` = 3–5 word lowercase slug extracted from article title/content
-
-**Dynamic examples:**
-- `output/instagram/2026-04-23_rag-architecture-guide.html`
-- `output/instagram/2026-04-23_ai-pm-interview-framework-caption.md`
-
-**What to save in the HTML file:** The complete, self-contained HTML file including
-dynamically generated slides based on article content, CSS, navigation, and export script.
-
-**What to save in the caption file:** The Instagram caption block and hashtag block generated from article content.
-
-After saving both, confirm with:
+**2. Caption:**
 ```
-✓ Saved carousel to output/instagram/[dynamic-html-filename]
-✓ Saved caption to output/instagram/[dynamic-caption-filename]
+output/instagram/YYYY-MM-DD_[topic-slug]-caption.md
+```
 
-Open the HTML file in a browser → click "Export all slides" to download PNGs.
+After saving, confirm with:
+```
+✓ Saved carousel to output/instagram/[filename].html
+✓ Saved caption to output/instagram/[filename]-caption.md
+
+Open the HTML file in Chrome or Safari → click "Export All Slides" → PNGs download → upload to Instagram.
 ```
 
 ---
 
-## Dynamic Output Checklist
+## Quality Checklist
 
-Before outputting the HTML file, verify:
+### Visual Design
+- [ ] Background is vibrant [BRAND_COLOR_PRIMARY] (not dull or dark on main slides)
+- [ ] Badge pills use [BRAND_COLOR_ACCENT] background with dark text
+- [ ] All text is white or high-contrast on colored backgrounds
+- [ ] Slide number badge visible top-right on all slides
+- [ ] Brand strip at bottom of every slide
+
+### Text Safety
+- [ ] No text exits the 400×400px slide boundary
+- [ ] All slides use box-sizing: border-box with 20px+ padding
+- [ ] Cover title: max 3 lines, max 6 words per line
+- [ ] Bullet slides: max 4 bullets, max 20 words each
+- [ ] Font sizes follow the size-by-content-volume table
+- [ ] No content compressed — extra content split into additional slides
 
 ### Content Coverage
 - [ ] All article key concepts covered in slides
-- [ ] Architecture diagrams extracted and visualized
-- [ ] Frameworks converted to step-by-step slides
-- [ ] Comparisons from article tables included
-- [ ] Problem statements addressed
+- [ ] Diagrams extracted from → arrow flows
+- [ ] Frameworks converted to step-by-step TYPE D slides
+- [ ] Comparison tables converted to TYPE E slides
+- [ ] Key statistics get dedicated TYPE F slides
 
-### Technical Requirements
-- [ ] Slide count matches article complexity (7-12 slides)
-- [ ] Slide 1 is TYPE A cover with dynamic content
-- [ ] Last slide is TYPE G CTA
-- [ ] All slides are exactly 400×400px
-- [ ] Brand colors match spec exactly (--accent: #F2C12D, --accent2: #FF69B4, --bg: #20B2AA)
-- [ ] Each slide has 4px left accent bar
-- [ ] Diagrams use max 8 nodes, 9px font minimum
+### Technical
+- [ ] Slide count matches article complexity (7–12 slides)
+- [ ] TYPE A cover is first slide, TYPE G CTA is last
+- [ ] All slides exactly 400×400px, overflow: hidden
+- [ ] TOTAL_SLIDES variable set correctly
+- [ ] Navigation dots match actual slide count
 - [ ] Export buttons present and wired to html2canvas
 - [ ] html2canvas loaded from cdnjs.cloudflare.com
-
-### Content-Driven Features
-- [ ] Workflows (→ arrows) converted to SVG diagrams
-- [ ] Article tables converted to comparison slides
-- [ ] Numbered frameworks visualized as step flows
-- [ ] Statistics extracted for dedicated slides
-- [ ] Instagram caption generated from article content
-- [ ] Hashtag block separated as "first comment" recommendation
-- [ ] No code blocks, no tables, no URLs (except CTA slide)
-- [ ] Cover headline has one word/phrase in --accent color
-- [ ] "aiskillshub.io · Ashima Malik" brand credit on cover slide
-
-### Dynamic Validation
-- [ ] Navigation dots match actual slide count
-- [ ] TOTAL_SLIDES variable set correctly
-- [ ] All article sections mapped to appropriate slide types
-- [ ] Content extraction preserves article's key insights
+- [ ] Export scale: 3× (outputs 1200×1200px)
+- [ ] Export progress counter shows (X/N) during batch export
+- [ ] All [BRAND_*] placeholders replaced with real values
