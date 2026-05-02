@@ -540,3 +540,4 @@ Open the HTML file in Chrome or Safari → click "Export All Slides" → PNGs do
 - [ ] Export scale: 3× (outputs 1200×1200px)
 - [ ] Export progress counter shows (X/N) during batch export
 - [ ] All [BRAND_*] placeholders replaced with real values
+
