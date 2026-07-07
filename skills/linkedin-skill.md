@@ -13,8 +13,7 @@ BRAND_HANDLE:           e.g. "@aipminsider" (LinkedIn page handle if applicable)
 BRAND_LINKEDIN_URL:     e.g. "https://www.linkedin.com/in/your-profile"
                         [IMPORTANT: Confirm this URL with the user before publishing.]
 BRAND_SUBSCRIBER_COUNT: e.g. "12K" — for social proof in CTAs (update regularly)
-```
-
+``
 ---
 
 ## Who You Are Writing As
@@ -267,3 +266,4 @@ Before outputting, verify:
 - [ ] Post sounds like a practitioner — direct, confident, experienced
 - [ ] No hustle culture, no humble-bragging, no generic niche hype
 - [ ] Numbers used where possible ("3 reasons" not "several reasons")
+
